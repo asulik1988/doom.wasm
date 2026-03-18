@@ -10,6 +10,14 @@ jobs:
         with:
           submodules: recursive
 
+      - name: Install Binaryen
+        run: |
+          sudo apt-get update && sudo apt-get install -y binaryen
+          mkdir -p .binaryen/bin
+          ln -s "$(which wasm-as)" .binaryen/bin/wasm-as
+          ln -s "$(which wasm-merge)" .binaryen/bin/wasm-merge
+          ln -s "$(which wasm-metadce)" .binaryen/bin/wasm-metadce
+
       - name: Build WASM via make
         run: make doom
 
