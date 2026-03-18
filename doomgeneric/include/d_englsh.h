@@ -35,7 +35,7 @@
 //
 #define PRESSKEY "press a key."
 #define PRESSYN "press y or n."
-#define QUITMSG "are you sure you want to\nquit this great game?"
+#define QUITMSG "are you sure? the brisket\nisn't gonna smoke itself."
 #define LOADNET "you can't do load while in a net game!\n\n" PRESSKEY
 #define QLOADNET "you can't quickload during a netgame!\n\n" PRESSKEY
 #define QSAVESPOT "you haven't picked a quicksave slot yet!\n\n" PRESSKEY
@@ -48,8 +48,8 @@
   "while in a network game.\n\n" PRESSKEY
 
 #define NIGHTMARE                                                              \
-  "are you sure? this skill level\n"                                           \
-  "isn't even remotely fair.\n\n" PRESSYN
+  "are you sure? this is like\n"                                               \
+  "deploying on a friday night.\n\n" PRESSYN
 
 #define SWSTRING                                                               \
   "this is the shareware version of doom.\n\n"                                 \
@@ -74,57 +74,57 @@
 //
 //	P_inter.C
 //
-#define GOTARMOR "Picked up the armor."
-#define GOTMEGA "Picked up the MegaArmor!"
-#define GOTHTHBONUS "Picked up a health bonus."
-#define GOTARMBONUS "Picked up an armor bonus."
-#define GOTSTIM "Picked up a stimpack."
-#define GOTMEDINEED "Picked up a medikit that you REALLY need!"
-#define GOTMEDIKIT "Picked up a medikit."
-#define GOTSUPER "Supercharge!"
+#define GOTARMOR "Picked up a code review. +1 defense."
+#define GOTMEGA "Mega deploy shield activated!"
+#define GOTHTHBONUS "Got a health commit. +1 stability."
+#define GOTARMBONUS "Got a unit test. +1 coverage."
+#define GOTSTIM "Applied a hotfix."
+#define GOTMEDINEED "Emergency patch deployed!"
+#define GOTMEDIKIT "Full stack restore complete."
+#define GOTSUPER "SUPERCHARGE: Unlimited coffee activated!"
 
-#define GOTBLUECARD "Picked up a blue keycard."
-#define GOTYELWCARD "Picked up a yellow keycard."
-#define GOTREDCARD "Picked up a red keycard."
-#define GOTBLUESKUL "Picked up a blue skull key."
-#define GOTYELWSKUL "Picked up a yellow skull key."
-#define GOTREDSKULL "Picked up a red skull key."
+#define GOTBLUECARD "Got the staging environment key."
+#define GOTYELWCARD "Got the production access key."
+#define GOTREDCARD "Got the root SSH key. Be careful."
+#define GOTBLUESKUL "Got the AWS skull... er, key."
+#define GOTYELWSKUL "Got the GCP skeleton key."
+#define GOTREDSKULL "Got Adam's personal deploy key."
 
-#define GOTINVUL "Invulnerability!"
-#define GOTBERSERK "Berserk!"
-#define GOTINVIS "Partial Invisibility"
-#define GOTSUIT "Radiation Shielding Suit"
-#define GOTMAP "Computer Area Map"
-#define GOTVISOR "Light Amplification Visor"
-#define GOTMSPHERE "MegaSphere!"
+#define GOTINVUL "God mode: Acquired venture capital! (just kidding)"
+#define GOTBERSERK "BERSERK: Drank Adam's 2 AM espresso!"
+#define GOTINVIS "Stealth mode: Code now in a private repo."
+#define GOTSUIT "Radiation suit: Protected from legacy code."
+#define GOTMAP "Got the architecture diagram. Finally."
+#define GOTVISOR "Night vision: Can now read minified code."
+#define GOTMSPHERE "MegaSphere! Full stack + full coverage!"
 
-#define GOTCLIP "Picked up a clip."
-#define GOTCLIPBOX "Picked up a box of bullets."
-#define GOTROCKET "Picked up a rocket."
-#define GOTROCKBOX "Picked up a box of rockets."
-#define GOTCELL "Picked up an energy cell."
-#define GOTCELLBOX "Picked up an energy cell pack."
-#define GOTSHELLS "Picked up 4 shotgun shells."
-#define GOTSHELLBOX "Picked up a box of shotgun shells."
-#define GOTBACKPACK "Picked up a backpack full of ammo!"
+#define GOTCLIP "Picked up some commits."
+#define GOTCLIPBOX "Picked up a mass merge of commits."
+#define GOTROCKET "Picked up a deployment rocket."
+#define GOTROCKBOX "Picked up a crate of deployment rockets."
+#define GOTCELL "Picked up a MacBook battery cell."
+#define GOTCELLBOX "Picked up a MacBook battery pack."
+#define GOTSHELLS "Picked up some shell scripts."
+#define GOTSHELLBOX "Picked up a box of shell scripts."
+#define GOTBACKPACK "Picked up a backpack full of npm packages!"
 
-#define GOTBFG9000 "You got the BFG9000!  Oh, yes."
-#define GOTCHAINGUN "You got the chaingun!"
-#define GOTCHAINSAW "A chainsaw!  Find some meat!"
-#define GOTLAUNCHER "You got the rocket launcher!"
-#define GOTPLASMA "You got the plasma gun!"
-#define GOTSHOTGUN "You got the shotgun!"
-#define GOTSHOTGUN2 "You got the super shotgun!"
+#define GOTBFG9000 "You got the BFG9000! (Big F***ing Grill)"
+#define GOTCHAINGUN "You got the CI/CD pipeline! Continuous fire!"
+#define GOTCHAINSAW "A chainsaw! Now THAT'S a refactor tool!"
+#define GOTLAUNCHER "You got the deployment launcher!"
+#define GOTPLASMA "You got the plasma debugger!"
+#define GOTSHOTGUN "You got the shotgun! Point-blank debugging."
+#define GOTSHOTGUN2 "You got the super shotgun! Double-barrel deploy."
 
 //
 // P_Doors.C
 //
-#define PD_BLUEO "You need a blue key to activate this object"
-#define PD_REDO "You need a red key to activate this object"
-#define PD_YELLOWO "You need a yellow key to activate this object"
-#define PD_BLUEK "You need a blue key to open this door"
-#define PD_REDK "You need a red key to open this door"
-#define PD_YELLOWK "You need a yellow key to open this door"
+#define PD_BLUEO "You need staging credentials to activate this."
+#define PD_REDO "You need root access to activate this."
+#define PD_YELLOWO "You need production credentials to activate this."
+#define PD_BLUEK "You need staging credentials to open this door."
+#define PD_REDK "You need root access to open this door."
+#define PD_YELLOWK "You need production credentials to open this door."
 
 //
 //	G_game.C
@@ -136,15 +136,15 @@
 //
 #define HUSTR_MSGU "[Message unsent]"
 
-#define HUSTR_E1M1 "E1M1: Hangar"
-#define HUSTR_E1M2 "E1M2: Nuclear Plant"
-#define HUSTR_E1M3 "E1M3: Toxin Refinery"
-#define HUSTR_E1M4 "E1M4: Command Control"
-#define HUSTR_E1M5 "E1M5: Phobos Lab"
-#define HUSTR_E1M6 "E1M6: Central Processing"
-#define HUSTR_E1M7 "E1M7: Computer Station"
-#define HUSTR_E1M8 "E1M8: Phobos Anomaly"
-#define HUSTR_E1M9 "E1M9: Military Base"
+#define HUSTR_E1M1 "E1M1: Adam's Garage"
+#define HUSTR_E1M2 "E1M2: The Deploy Pipeline"
+#define HUSTR_E1M3 "E1M3: npm install --save-doom"
+#define HUSTR_E1M4 "E1M4: The Legacy Codebase"
+#define HUSTR_E1M5 "E1M5: Stack Overflow (literally)"
+#define HUSTR_E1M6 "E1M6: The Sausage Factory"
+#define HUSTR_E1M7 "E1M7: Server Room of Doom"
+#define HUSTR_E1M8 "E1M8: The Final Merge Conflict"
+#define HUSTR_E1M9 "E1M9: The Secret BBQ Pit"
 
 #define HUSTR_E2M1 "E2M1: Deimos Anomaly"
 #define HUSTR_E2M2 "E2M2: Containment Area"

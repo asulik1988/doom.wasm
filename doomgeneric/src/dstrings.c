@@ -19,14 +19,14 @@
 #include "dstrings.h"
 
 char *doom1_endmsg[] = {
-    "are you sure you want to\nquit this great game?",
-    "please don't leave, there's more\ndemons to toast!",
-    "let's beat it -- this is turning\ninto a bloodbath!",
-    "i wouldn't leave if i were you.\ndos is much worse.",
-    "you're trying to say you like dos\nbetter than me, right?",
-    "don't leave yet -- there's a\ndemon around that corner!",
-    "ya know, next time you come in here\ni'm gonna toast ya.",
-    "go ahead and leave. see if i care.",
+    "are you sure? adam's still\nsmoking brisket in here.",
+    "quit now and you'll never know\nthe meat-to-fat ratio.",
+    "the deploy pipeline is still\nrunning. you sure?",
+    "real developers don't quit.\nthey just switch terminals.",
+    "but we haven't even calculated\nthe sausage yet!",
+    "leaving already? the school squad\nparents will be disappointed.",
+    "git stash your progress\nand come back later?",
+    "warning: unsaved brisket\nmay be lost.",
 };
 
 char *doom2_endmsg[] = {
