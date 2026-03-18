@@ -10,13 +10,14 @@ jobs:
         with:
           submodules: recursive
 
-      - name: Install Binaryen
+      - name: Install Binaryen from GitHub release
         run: |
-          sudo apt-get update && sudo apt-get install -y binaryen
+          curl -sL https://github.com/WebAssembly/binaryen/releases/download/version_119/binaryen-version_119-x86_64-linux.tar.gz | tar xz
           mkdir -p .binaryen/bin
-          ln -s "$(which wasm-as)" .binaryen/bin/wasm-as
-          ln -s "$(which wasm-merge)" .binaryen/bin/wasm-merge
-          ln -s "$(which wasm-metadce)" .binaryen/bin/wasm-metadce
+          cp binaryen-version_119/bin/wasm-as .binaryen/bin/
+          cp binaryen-version_119/bin/wasm-merge .binaryen/bin/
+          cp binaryen-version_119/bin/wasm-metadce .binaryen/bin/
+          rm -rf binaryen-version_119
 
       - name: Build WASM via make
         run: make doom
