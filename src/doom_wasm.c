@@ -3,8 +3,12 @@
 #include <string.h>
 
 #include "doomgeneric.h"
-#include "doomstat.h"
 #include "doom_wasm.h"
+
+// Doom's game state enum (from doomdef.h) and global variable (from doomstat.h)
+// Declared here directly to avoid header conflicts with the wasm bridge
+typedef enum { GS_LEVEL, GS_INTERMISSION, GS_FINALE, GS_DEMOSCREEN } gamestate_t_wasm;
+extern gamestate_t_wasm gamestate;
 #include "file_embedded_in_code/DOOM1.WAD.h"
 
 /*
@@ -77,7 +81,7 @@ void reportKeyUp(int32_t doomKey) {
  *  3 = GS_DEMOSCREEN (title screen / menu)
  */
 EXPORT int32_t getGameState() {
-  return (int32_t)gamestate;
+  return (int32_t)((int)gamestate);
 }
 
 // *****************************************************************************
