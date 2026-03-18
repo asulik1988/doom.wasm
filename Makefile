@@ -240,7 +240,7 @@ $(OUTPUT_DIR)/%.o:	doomgeneric/src/%.c
 $(OUTPUT_DIR_WASM_SPECIFIC)/%.o:	src/%.c $(HEADERS_FOR_EMBEDDED_FILES)
 	$(VB)if echo "$(CC)" | grep -q "wasi"; then \
 		echo [Compiling $<]; \
-		$(CC) $(CFLAGS) -I$(DIR_CONTAINING_THIS_MAKEFILE)/doomgeneric -I$(OUTPUT_DIR) -c $< -o $@; \
+		$(CC) $(CFLAGS) -I$(DIR_CONTAINING_THIS_MAKEFILE)/doomgeneric -I$(DIR_CONTAINING_THIS_MAKEFILE)/doomgeneric/include -I$(OUTPUT_DIR) -c $< -o $@; \
 	else \
 		echo [Delegating to WASI SDK Docker image]; \
 		${RUN_IN_WASI_SDK_DOCKER_IMAGE} make $(MAKEFLAGS) $@; \
