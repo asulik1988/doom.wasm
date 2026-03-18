@@ -1,0 +1,20 @@
+name: Build Doom WASM
+on:
+  push:
+    branches: [master]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Build WASM via make
+        run: make doom
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: doom-wasm
+          path: build/doom.wasm

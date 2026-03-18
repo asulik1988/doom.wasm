@@ -3,6 +3,7 @@
 #include <string.h>
 
 #include "doomgeneric.h"
+#include "doomstat.h"
 #include "doom_wasm.h"
 #include "file_embedded_in_code/DOOM1.WAD.h"
 
@@ -64,6 +65,19 @@ void reportKeyUp(int32_t doomKey) {
             "accepts values in the range [0, %i]\n",
             doomKey, UINT8_MAX);
   }
+}
+
+/*
+ * Query the current game state
+ *
+ * Returns:
+ *  0 = GS_LEVEL (in gameplay)
+ *  1 = GS_INTERMISSION (between levels)
+ *  2 = GS_FINALE (end game text)
+ *  3 = GS_DEMOSCREEN (title screen / menu)
+ */
+EXPORT int32_t getGameState() {
+  return (int32_t)gamestate;
 }
 
 // *****************************************************************************

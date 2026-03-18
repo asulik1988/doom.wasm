@@ -6,6 +6,7 @@
       "export-reportKeyDown",
       "export-reportKeyUp",
       "export-tickGame",
+      "export-getGameState",
       "export-memory"
     ],
     "root": true
@@ -25,6 +26,10 @@
   {
     "name": "export-tickGame",
     "export": "tickGame"
+  },
+  {
+    "name": "export-getGameState",
+    "export": "getGameState"
   },
   {
     "name": "export-memory",
