@@ -101,34 +101,29 @@ struct DB_BytesForAllWads DG_GetWads() {
   size_t numberOfTotalBytesInAllWads = 0;
   wadSizes(&numberOfWads, &numberOfTotalBytesInAllWads);
 
+  // Always use the embedded shareware IWAD
+  result.iWad.data = malloc(DOOM1_WAD_length);
+  memcpy(result.iWad.data, DOOM1_WAD_data, DOOM1_WAD_length);
+  result.iWad.byteLength = DOOM1_WAD_length;
+
   if (numberOfWads > 0) {
+    // Treat ALL provided WADs as PWADs (patches on top of embedded IWAD)
     unsigned char *wadData = malloc(numberOfTotalBytesInAllWads);
     int byteLengthOfEachWad[numberOfWads];
     memset(byteLengthOfEachWad, 0, sizeof(byteLengthOfEachWad));
     readWads(wadData, byteLengthOfEachWad);
 
     unsigned char *dataForNextWad = wadData;
-
-    // Assign data for IWAD (which must be the first WAD)
-    result.iWad.data = dataForNextWad;
-    result.iWad.byteLength = byteLengthOfEachWad[0];
-    dataForNextWad += byteLengthOfEachWad[0];
-
-    // Assign data each PWADs
-    int numberOfPWads = numberOfWads - 1;
-    result.numberOfPWads = numberOfPWads;
-    result.pWads = malloc(sizeof(struct DG_WadFileBytes) * numberOfPWads);
-    for (int i = 0; i < numberOfPWads; i++) {
+    result.numberOfPWads = numberOfWads;
+    result.pWads = malloc(sizeof(struct DG_WadFileBytes) * numberOfWads);
+    for (int i = 0; i < numberOfWads; i++) {
       result.pWads[i].data = dataForNextWad;
-      result.pWads[i].byteLength = byteLengthOfEachWad[i + 1];
-      dataForNextWad += byteLengthOfEachWad[i + 1];
+      result.pWads[i].byteLength = byteLengthOfEachWad[i];
+      dataForNextWad += byteLengthOfEachWad[i];
     }
+    printf("Loaded embedded shareware IWAD + %d PWAD(s)\n", numberOfWads);
   } else {
-    printf("Defaulting to loading Doom shareware WAD because no WAD data was "
-           "provided\n");
-    result.iWad.data = malloc(DOOM1_WAD_length);
-    memcpy(result.iWad.data, DOOM1_WAD_data, DOOM1_WAD_length);
-    result.iWad.byteLength = DOOM1_WAD_length;
+    printf("Loaded embedded shareware IWAD (no PWADs)\n");
     result.numberOfPWads = 0;
     result.pWads = 0;
   }
