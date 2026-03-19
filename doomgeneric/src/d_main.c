@@ -1364,9 +1364,10 @@ void D_DoomMain(void) {
                         "heada1", "cybra1", "spida1d1"};
     int i;
 
-    if (gamemode == shareware)
-      I_Error(DEH_String("\nYou cannot -file with the shareware "
-                         "version. Register!"));
+    // Shareware PWAD check removed to allow custom face sprites
+    // if (gamemode == shareware)
+    //   I_Error(DEH_String("\nYou cannot -file with the shareware "
+    //                      "version. Register!"));
 
     // Check for fake IWAD with right name,
     // but w/o all the lumps of the registered version.
