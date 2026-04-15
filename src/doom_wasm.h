@@ -89,6 +89,26 @@ EXPORT void reportKeyDown(int32_t doomKey);
  */
 EXPORT void reportKeyUp(int32_t doomKey);
 
+/*
+ * Query the console player's X position in the current map
+ *
+ * returns:
+ *  The x coordinate of the player's map object, in Doom's 16.16 fixed-point
+ *  format. JS callers should divide by 65536.0 to recover the map-unit float.
+ *  Returns 0 when no player map object exists (e.g. before a level is loaded).
+ */
+EXPORT int32_t getPlayerX();
+
+/*
+ * Query the console player's Y position in the current map
+ *
+ * returns:
+ *  The y coordinate of the player's map object, in Doom's 16.16 fixed-point
+ *  format. JS callers should divide by 65536.0 to recover the map-unit float.
+ *  Returns 0 when no player map object exists (e.g. before a level is loaded).
+ */
+EXPORT int32_t getPlayerY();
+
 // *****************************************************************************
 // *                             IMPORTED FUNCTIONS                            *
 // *****************************************************************************

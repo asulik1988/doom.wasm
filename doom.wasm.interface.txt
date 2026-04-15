@@ -20,6 +20,9 @@ imports:
   function ui.drawFrame(i32) -> ()
 
 exports:
+  function getGameState() -> (i32)
+  function getPlayerX() -> (i32)
+  function getPlayerY() -> (i32)
   function initGame() -> ()
   function reportKeyDown(i32) -> ()
   function reportKeyUp(i32) -> ()

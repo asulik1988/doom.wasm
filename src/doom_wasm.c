@@ -9,6 +9,14 @@
 // Declared here directly to avoid header conflicts with the wasm bridge
 typedef enum { GS_LEVEL, GS_INTERMISSION, GS_FINALE, GS_DEMOSCREEN } gamestate_t_wasm;
 extern gamestate_t_wasm gamestate;
+
+// Bring in the player data structure so we can query the console player's
+// world position. d_player.h transitively includes doomdef.h (for MAXPLAYERS)
+// and p_mobj.h (for the mobj_t layout with x/y fields).
+#include "d_player.h"
+extern player_t players[MAXPLAYERS];
+extern int consoleplayer;
+
 #include "file_embedded_in_code/DOOM1.WAD.h"
 
 /*
@@ -82,6 +90,31 @@ void reportKeyUp(int32_t doomKey) {
  */
 EXPORT int32_t getGameState() {
   return (int32_t)((int)gamestate);
+}
+
+/*
+ * Query the console player's X position in the current map.
+ *
+ * Returns the x coordinate as a Doom 16.16 fixed-point value. Callers in JS
+ * typically divide by 65536.0 to recover the map-unit float.
+ *
+ * Returns 0 when there is no player map object yet (e.g. before a level has
+ * finished loading, or on the title/menu screens).
+ */
+EXPORT int32_t getPlayerX() {
+  if (!players[consoleplayer].mo) return 0;
+  return (int32_t)players[consoleplayer].mo->x;
+}
+
+/*
+ * Query the console player's Y position in the current map.
+ *
+ * See getPlayerX for the unit convention. Returns 0 when no player map
+ * object exists.
+ */
+EXPORT int32_t getPlayerY() {
+  if (!players[consoleplayer].mo) return 0;
+  return (int32_t)players[consoleplayer].mo->y;
 }
 
 // *****************************************************************************
