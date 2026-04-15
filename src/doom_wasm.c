@@ -5,15 +5,27 @@
 #include "doomgeneric.h"
 #include "doom_wasm.h"
 
-// Doom's game state enum (from doomdef.h) and global variable (from doomstat.h)
-// Declared here directly to avoid header conflicts with the wasm bridge
-typedef enum { GS_LEVEL, GS_INTERMISSION, GS_FINALE, GS_DEMOSCREEN } gamestate_t_wasm;
-extern gamestate_t_wasm gamestate;
+// Bring in d_player.h for player_t and its transitive mobj_t layout so we can
+// read the console player's world position. d_player.h transitively pulls
+// in doomtype.h (which defines `boolean` as an enum with `false`/`true`
+// enumerators) and doomdef.h (which defines MAXPLAYERS and gamestate_t).
+// The `false`/`true` enumerators clash with <stdbool.h>'s macros (included
+// at the top of this file), so we temporarily undef them across the include
+// and restore after. The doom `boolean` enum uses the same 0/1 values as
+// stdbool's macros, so any bool literals elsewhere in this file continue to
+// produce the correct values either way.
+#pragma push_macro("false")
+#pragma push_macro("true")
+#undef false
+#undef true
+#include "d_player.h"  // brings in mobj_t (with x/y) and player_t (with mo)
+#include "doomdef.h"   // brings in gamestate_t and MAXPLAYERS
+#pragma pop_macro("true")
+#pragma pop_macro("false")
 
-// Bring in the player data structure so we can query the console player's
-// world position. d_player.h transitively includes doomdef.h (for MAXPLAYERS)
-// and p_mobj.h (for the mobj_t layout with x/y fields).
-#include "d_player.h"
+// Doom's globals live in doomstat.c; we declare the ones we need directly
+// rather than including doomstat.h (which pulls in additional headers).
+extern gamestate_t gamestate;
 extern player_t players[MAXPLAYERS];
 extern int consoleplayer;
 
